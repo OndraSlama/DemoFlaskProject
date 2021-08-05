@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from authentication import auth
+from common.authentication import auth
 from flask import jsonify
 
 class AnnotationResource(Resource):

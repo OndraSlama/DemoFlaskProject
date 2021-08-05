@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Api
-from annotation_resource import AnnotationResource
+from resources.annotation_resource import AnnotationResource
 
 app = Flask(__name__)
 api = Api(app)

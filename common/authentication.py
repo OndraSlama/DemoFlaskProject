@@ -1,8 +1,6 @@
 from flask_httpauth import HTTPBasicAuth
 import os
 
-from werkzeug.utils import validate_arguments
-
 USER_DATA = {
     os.environ.get("USER_NAME"): os.environ.get("USER_PASS")
 }
