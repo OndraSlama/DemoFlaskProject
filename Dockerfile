@@ -12,6 +12,10 @@ ENV PYTHONUNBUFFERED=1
 ENV USER_NAME=myUser123
 ENV USER_PASS=secretSecret
 
+# Rossum credentials
+ENV ROSSUM_USER=civek71553@697av.com
+ENV ROSSUM_PASS=rossum123456
+
 # Install pip requirements
 COPY requirements.txt .
 RUN python -m pip install -r requirements.txt
