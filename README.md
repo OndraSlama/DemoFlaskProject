@@ -1,2 +1,2 @@
 # DemoFlaskProject
-Demo Flask project
+Demo API Flask project
