@@ -1,21 +1,12 @@
-import flask
-import os
-from flask_basicauth import BasicAuth
+from flask import Flask
+from flask_restful import Api
+from xml_resource import XmlResource
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
+api = Api(app)
 
-app.config['BASIC_AUTH_USERNAME'] = os.environ.get("USER_NAME")
-app.config['BASIC_AUTH_PASSWORD'] = os.environ.get("USER_PASS")
-basic_auth = BasicAuth(app)
-
-@app.route('/')
-def index():
-    return f'Hello, World! User {os.environ.get("USER_NAME")}'
-
-@app.route('/secret')
-@basic_auth.required
-def secret_index():
-    return f'Secret stuff! User {os.environ.get("USER_NAME")}'
+# add resource
+api.add_resource(XmlResource, '/secret')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
