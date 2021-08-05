@@ -1,3 +1,2 @@
 flask==1.1.2
-gunicorn==20.0.4
 Flask_BasicAuth==0.2.0
