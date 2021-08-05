@@ -2,12 +2,11 @@ from flask_restful import Resource
 from authentication import auth
 from flask import jsonify
 
-
 class XmlResource(Resource):
     @auth.login_required
-    def get(self) -> str:
+    def get(self, annotation_id) -> str:
         return jsonify({
             "success": True,
-            "content": "Secret stuff!"            
+            "content": f"Secret stuff! ID: {annotation_id}"            
             })
 
