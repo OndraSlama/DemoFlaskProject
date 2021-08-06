@@ -41,12 +41,14 @@ class AnnotationResource(Resource):
         parsed_annotation_b64_encoded = base64.b64encode(parsed_annotation.encode('utf-8')).decode('utf-8')
         try:
             mle_response = requests.post(self.mle_url, json={"annotationId": annotation_id, "content": parsed_annotation_b64_encoded})
+            code = mle_response.status_code
             success = mle_response.status_code == 200
         except requests.exceptions.ConnectionError:
             success = False
+            code = 502
 
         # Return response
         return {
                 "success": success,          
-            }, 200 if success else 400
+            }, code 
 
