@@ -4,12 +4,10 @@ import requests
 import os
 import base64
 
-
 from common.authentication import auth
 from common.annotation_parser import AnnotationParser
-
 class AnnotationResource(Resource):
-    """ Resource for /export endpoint - exporting XML format to another  """
+    """ Resource for /export endpoint - exporting XML format to another one """
 
     # Rossum api data
     rossum_url = "https://api.elis.rossum.ai/v1/annotations/{annotation_id}" 

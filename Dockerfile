@@ -8,7 +8,8 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Endpoint correct credentials
+# Credentials: for this demo saved to env variables from here for convenience
+# Correct endpoint credentials
 ENV USER_NAME=myUser123
 ENV USER_PASS=secretSecret
 
