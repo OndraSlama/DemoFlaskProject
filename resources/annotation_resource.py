@@ -1,7 +1,8 @@
+from flask import json
 from flask_restful import Resource
-from flask import jsonify
 import requests
 import os
+import base64
 
 
 from common.authentication import auth
@@ -36,13 +37,16 @@ class AnnotationResource(Resource):
         from common.xml_templates import invoices_template
         parsed_annotation: str = parser.parse(invoices_template)
 
+        # Send the annotation to the my-little-endpoint
+        parsed_annotation_b64_encoded = base64.b64encode(parsed_annotation.encode('utf-8')).decode('utf-8')
+        try:
+            mle_response = requests.post(self.mle_url, json={"annotationId": annotation_id, "content": parsed_annotation_b64_encoded})
+            success = mle_response.status_code == 200
+        except requests.exceptions.ConnectionError:
+            success = False
 
         # Return response
         return {
-                "success": True,
-                "content": {"id": annotation_id, 
-                            "response": rossum_response.text, 
-                            "parsed_annotation": parsed_annotation
-                        }            
-            }, 200
+                "success": success,          
+            }, 200 if success else 400
 
