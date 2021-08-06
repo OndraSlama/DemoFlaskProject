@@ -1,0 +1,29 @@
+{
+	"InvoiceRegisters": {       
+        "Invoices": {    
+            "Payable": { 	
+				"#list": "annotation",		
+                "InvoiceNumber" : {"#source_id": "invoice_id"},
+                "InvoiceDate" : {"#source_id": "date_issue"},
+                "DueDate" : {"#source_id": "date_due"},
+                "TotalAmount" : {"#source_id": "amount_total"},
+                "Notes" : {"#source_id": null},
+                "Iban" : {"#source_id": "iban"},
+                "Amount" : {"#source_id": "amount_total_tax"},
+                "Currency" : {"#source_id": "currency"},
+                "Vendor" : {"#source_id": "sender_name"},
+                "VendorAddress" : {"#source_id": "sender_address"},
+                "Details" :{                    
+                    "#list": "@line_item",
+                    "Detail": { 
+                        "Amount": {"#source_id": "item_amount_total"},
+                        "AccountId": {"#source_id": null},
+                        "Quantity": {"#source_id": "item_quantity"},
+                        "Notes": {"#source_id": "item_description"}
+                    }
+                }
+            }
+        }        
+    }
+}
+
