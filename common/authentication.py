@@ -8,6 +8,7 @@ USER_DATA = {
 auth = HTTPBasicAuth()
 @auth.verify_password
 def verify(username, password):
+    """ Function to verify user credentials """
 
     if not (username and password):
         return False
